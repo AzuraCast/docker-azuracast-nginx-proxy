@@ -9,5 +9,8 @@ RUN openssl req -new -nodes -x509 -subj "/C=US/ST=Texas/L=Austin/O=IT/CN=localho
     -keyout /etc/nginx/certs/default.key \
 	-out /etc/nginx/certs/default.crt
 
+# Copy configuration file
+COPY ./conf.d/azuracast.conf /etc/nginx/conf.d/azuracast.conf
+
 # Set default environment variables
 ENV DEFAULT_HOST="azuracast.local"
