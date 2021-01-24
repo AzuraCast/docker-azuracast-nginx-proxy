@@ -314,7 +314,7 @@ server {
     {{ end }}
 
     {{ if $is_azuracast }}
-    include /etc/nginx/azuracast.conf;
+    include /etc/nginx/vhost.d/azuracast.conf;
     {{ end }}
 
     {{ if (exists (printf "/etc/nginx/vhost.d/%s" $host)) }}
@@ -367,7 +367,7 @@ server {
     {{ end }}
 
     {{ if $is_azuracast }}
-    include /etc/nginx/azuracast.conf;
+    include /etc/nginx/vhost.d/azuracast.conf;
     {{ end }}
 
     {{ if (exists (printf "/etc/nginx/vhost.d/%s" $host)) }}
