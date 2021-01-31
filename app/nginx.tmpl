@@ -318,10 +318,6 @@ server {
     add_header Strict-Transport-Security "{{ trim $hsts }}" always;
     {{ end }}
 
-    {{ if $is_azuracast }}
-    include /etc/nginx/azuracast.conf;
-    {{ end }}
-
     {{ if (exists (printf "/etc/nginx/vhost.d/%s" $host)) }}
     include {{ printf "/etc/nginx/vhost.d/%s" $host }};
     {{ else if (exists "/etc/nginx/vhost.d/default") }}
@@ -369,10 +365,6 @@ server {
     {{ if eq $network_tag "internal" }}
     # Only allow traffic from internal clients
     include /etc/nginx/network_internal.conf;
-    {{ end }}
-
-    {{ if $is_azuracast }}
-    include /etc/nginx/azuracast.conf;
     {{ end }}
 
     {{ if (exists (printf "/etc/nginx/vhost.d/%s" $host)) }}
