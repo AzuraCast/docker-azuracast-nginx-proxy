@@ -7,8 +7,11 @@ RUN apk upgrade --no-cache
 COPY ./app /app
 COPY ./etc/nginx /etc/nginx
 
-RUN chmod a+x /app/docker-entrypoint.sh
+RUN chmod a+x /app/custom-entrypoint.sh
 
 # Set default environment variables
 ENV DEFAULT_HOST="azuracast.local" \
     NGINX_TIMEOUT=1800
+
+ENTRYPOINT ["/app/custom-entrypoint.sh"]
+CMD ["forego", "start", "-r"]
